@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from .models import List
 
 
 def home(request):
-    return render(request, 'home.html', {})
+    all_items = List.objects.all
+    return render(request, 'home.html', {'all_items': all_items})
 
 
 def about(request):
-    my_name = "Steve Hepple"
-
-    return render(request, 'about.html', {'name': my_name})
+    context = {'first_name': 'steve', 'last_name': 'hepple'}
+    return render(request, 'about.html', context)
