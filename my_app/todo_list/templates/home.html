@@ -5,10 +5,22 @@
 
 
     {% if all_items %}
-    <ul>
+    <table class="table table-bordered">
         {% for things in all_items %}
-            <li>{{ things.item }}</li>
+            {% if things.completed %}
+                <tr class="table-primary">
+                    <td>{{ things.item }}</td>
+                    <td><center>{{ things.completed }}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{ things.item }}</td>
+                    <td><center>{{ things.completed }}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% endif %}
         {% endfor %}
-    </ul>
+    </table>
     {% endif %}
 {% endblock %}
